@@ -1,4 +1,4 @@
-package org.apache.thrift.maven;
+package com.br.ibu.thrift.maven;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one

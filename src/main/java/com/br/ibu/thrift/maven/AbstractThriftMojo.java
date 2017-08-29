@@ -1,4 +1,4 @@
-package org.apache.thrift.maven;
+package com.br.ibu.thrift.maven;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -55,8 +55,8 @@ import static org.codehaus.plexus.util.FileUtils.getFiles;
 /**
  * Abstract Mojo implementation.
  * <p/>
- * This class is extended by {@link org.apache.thrift.maven.ThriftCompileMojo} and
- * {@link org.apache.thrift.maven.ThriftTestCompileMojo} in order to override the specific configuration for
+ * This class is extended by {@link com.br.ibu.thrift.maven.ThriftCompileMojo} and
+ * {@link com.br.ibu.thrift.maven.ThriftTestCompileMojo} in order to override the specific configuration for
  * compiling the main or test classes respectively.
  *
  * @author Gregory Kick
