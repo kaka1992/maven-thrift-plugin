@@ -26,6 +26,12 @@ namespace cpp shared
 namespace java shared
 namespace perl shared
 
+include "dto.thrift"
+
+typedef i16 short
+typedef i32 int
+typedef i64 long
+
 struct SharedStruct {
   1: i32 key
   2: string value
@@ -33,4 +39,26 @@ struct SharedStruct {
 
 service SharedService {
   SharedStruct getStruct(1: i32 key)
+}
+
+service BucketService {
+
+    dto.BucketDTO dispatch(1:int tid, 2:map<string, string> params),
+
+    dto.BucketDTO getMainBucket(1:int tid, 2:int appId),
+
+    list<dto.BucketDTO> getBucketByEngine(1:int tid, 2:int appId, 3:string bucketName)
+
+}
+
+service BucketManageService {
+
+    dto.BoolDTO reload(1:int tid)
+
+}
+
+service BucketDataSyncService {
+
+    dto.BoolDTO crowdSync(1:int tid, 2:int appId, 3:string bucket, 4:string version, 5:list<dto.CrowdDTO> crowds)
+
 }

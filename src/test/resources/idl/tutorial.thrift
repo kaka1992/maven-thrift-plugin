@@ -57,6 +57,8 @@
  * prefix. i.e. shared.SharedObject
  */
 include "shared.thrift"
+include "dto.thrift"
+
 
 /**
  * Thrift files can namespace, package, or prefix their output in various
@@ -73,6 +75,10 @@ namespace smalltalk.category Thrift.Tutorial
  * C style here.
  */
 typedef i32 MyInteger
+
+typedef i16 short
+typedef i32 int
+typedef i64 long
 
 /**
  * Thrift also lets you define constants for use across languages. Complex
@@ -140,7 +146,9 @@ service Calculator extends shared.SharedService {
     * a request and does not listen for any response at all. Oneway methods
     * must be void.
     */
-   oneway void zip()
+   oneway void zip(),
+
+   shared.SharedStruct zip2()
 
 }
 
@@ -150,3 +158,25 @@ service Calculator extends shared.SharedService {
  * in folders with names gen-<language>. The generated code isn't too scary
  * to look at. It even has pretty indentation.
  */
+
+service BucketService {
+
+    dto.BucketDTO dispatch(1:int tid, 2:map<string, string> params),
+
+    dto.BucketDTO getMainBucket(1:int tid, 2:int appId),
+
+    list<dto.BucketDTO> getBucketByEngine(1:int tid, 2:int appId, 3:string bucketName)
+
+}
+
+service BucketManageService {
+
+    dto.BoolDTO reload(1:int tid)
+
+}
+
+service BucketDataSyncService {
+
+    dto.BoolDTO crowdSync(1:int tid, 2:int appId, 3:string bucket, 4:string version, 5:list<dto.CrowdDTO> crowds)
+
+}

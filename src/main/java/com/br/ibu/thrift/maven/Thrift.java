@@ -90,6 +90,7 @@ final class Thrift {
             Commandline cl = new Commandline();
             cl.setExecutable(executable);
             cl.addArguments(buildThriftCommand(thriftFile).toArray(new String[]{}));
+            System.out.println(cl);
             final int result = CommandLineUtils.executeCommandLine(cl, null, output, error);
 
             if (result != 0) {
